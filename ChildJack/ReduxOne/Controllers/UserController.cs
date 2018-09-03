@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ReduxOne.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ReduxOne.Models;
 
 namespace ReduxOne.Controllers
 {
@@ -13,23 +13,35 @@ namespace ReduxOne.Controllers
     public class UserController : ControllerBase
     {
         private List<User> users;
+        private UserContext userContext;
 
-        public UserController()
+        public UserController(UserContext userContext)
         {
-            this.users = new List<User>
-            {
-                new User{Id = 1, Name = "Vlad", Email = "balkar20@mail.ru"},
-                new User{Id = 2, Name = "Slava", Email = "kolobok@mail.ru"},
-                new User{Id = 3, Name = "Kombo", Email = "kombo@mail.ru"},
-                new User{Id = 4, Name = "Jes", Email = "jessey0@mail.ru"},
-                new User{Id = 5, Name = "Marla", Email = "Marla@mail.ru"}
-            };
+            this.userContext = userContext;
+
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<User> GetUsers(int id)
         {
-            return users;
+            var users = new List<User> {
+            new User { Name = "Kombo", Email = "kombo@mail.ru", Password = "12345"},
+            new User {Name = "Jes", Email = "jessey0@mail.ru", Password = "12345"},
+            new User { Name = "Marla", Email = "Marla@mail.ru", Password = "12345"}
+            };
+            try
+            {
+                var userTodel = this.userContext.Users.Where(u => u.Id == 1).FirstOrDefault();
+                userContext.Users.Remove(userTodel);
+                this.userContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                var mes = e.Message;
+            }
+            var uss = userContext.Users.ToList();
+            return uss;
+
         }
 
         public User GetUser(int id)

@@ -1,4 +1,6 @@
-﻿namespace ReduxOne.Models
+﻿using System;
+
+namespace ChildData.Models
 {
     public class User
     {

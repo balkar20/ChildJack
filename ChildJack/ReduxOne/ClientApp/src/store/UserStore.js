@@ -1,10 +1,10 @@
 ﻿const receiveUsersType = 'RECEIVE_USERS';
-const initialState = { users: {name:'Ko'} };
+const initialState = { users: [] };
 
 export const actionCreators = {
     requestUsers: startDateIndex => async (dispatch, getState) => {
-        const url = `api/User/GetUser?id=${1}`;
-        const response = await fetch();
+        const url = `api/User/GetUsers?id=${1}`;
+        const response = await fetch(url);
         const users = await response.json();
 
         dispatch({ type: receiveUsersType, users });

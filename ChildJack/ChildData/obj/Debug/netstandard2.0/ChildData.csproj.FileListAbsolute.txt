@@ -1,0 +1,6 @@
+D:\ChildJack\ChildJack\ChildData\bin\Debug\netstandard2.0\ChildData.deps.json
+D:\ChildJack\ChildJack\ChildData\bin\Debug\netstandard2.0\ChildData.dll
+D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.csprojAssemblyReference.cache
+D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.csproj.CoreCompileInputs.cache
+D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.AssemblyInfoInputs.cache
+D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.AssemblyInfo.cs

@@ -10,27 +10,41 @@ class FetchUserData extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.props.requestUsers();
+        //this.props.requestUsers();
     }
 
     render() {
         return (
             <div>
-                <h1>Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server and working with URL parameters.</p>
-                {renderUsersTable(this.props)}
+            { renderUsersTable(this.props)}
             </div>
-        );
+            )
     }
 }
 
 function renderUsersTable(props) {
     return (
-        <div>props.users.name</div>
+        <table className='table'>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Temp. (C)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {props.users.map(user =>
+                    <tr key={user.id}>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
     );
 }
 
 export default connect(
     state => state.users,
     dispatch => bindActionCreators(actionCreators, dispatch)
-    )(FetchUserData);
+)(FetchUserData);

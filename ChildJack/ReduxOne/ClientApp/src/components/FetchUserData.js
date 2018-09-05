@@ -9,9 +9,6 @@ class FetchUserData extends Component {
         this.props.requestUsers();
     }
 
-    componentWillReceiveProps(nextProps) {
-        //this.props.requestUsers();
-    }
 
     render() {
         return (

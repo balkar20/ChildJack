@@ -1,5 +1,5 @@
 body, navCol {
-    background:rgb(183, 194, 178);
+    background:#ffffff;
 }
 @media (max-width: 767px) {
     /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */

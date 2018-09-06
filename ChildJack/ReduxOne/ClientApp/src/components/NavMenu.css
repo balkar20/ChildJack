@@ -1,6 +1,9 @@
 ﻿.navbar.navbar-inverse{
-    background: whitesmoke;
+    background:none;
+    border-top: none;
+    border-color: #000000;
     color: teal;
+    border-radius: 0%;
 }
 .navbar.navbar-inverse li>a {
     color: #5340ff;
@@ -9,3 +12,10 @@
     background-color: black;
     color: brown;
 }
+/* .navbar.navbar-inverse .container{
+    margin-left: 0;
+    padding-left: 0;
+}
+.navbar .navbar-collapse{
+ padding-left: 0;
+}  */

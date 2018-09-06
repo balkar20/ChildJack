@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom';
 import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './NavMenu.css';
+import {css} from "aphrodite";
+import styles from "./NavStyle";
 
-export default props => (
-    <Navbar inverse collapseOnSelect>
-        <Navbar.Collapse>
+
+
+
+
+export default class NavMenu extends React.Component{
+    render(){
+        return(
+        <Navbar className={css(styles.container)} inverse collapseOnSelect>
+        <Navbar.Collapse className={css(styles.navbarCollapse)}>
             <Nav>
                 <LinkContainer to={'/'} exact>
                     <NavItem>
@@ -31,5 +39,7 @@ export default props => (
             </Nav>
         </Navbar.Collapse>
         <Navbar.Toggle />
-    </Navbar>
-);
+    </Navbar>)
+        
+    }
+}

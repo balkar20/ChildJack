@@ -1,10 +1,14 @@
-﻿namespace ReduxOne.Models
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+namespace ReduxOne.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public User()
+        {
+            
+        }
+        public int Year { get; set; }
     }
 }

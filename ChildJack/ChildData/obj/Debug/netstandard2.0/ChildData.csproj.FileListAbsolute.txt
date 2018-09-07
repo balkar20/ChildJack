@@ -4,3 +4,6 @@ D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.csprojAssemb
 D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.csproj.CoreCompileInputs.cache
 D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.AssemblyInfoInputs.cache
 D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.AssemblyInfo.cs
+D:\ChildJack\ChildJack\ChildData\bin\Debug\netstandard2.0\ChildData.pdb
+D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.dll
+D:\ChildJack\ChildJack\ChildData\obj\Debug\netstandard2.0\ChildData.pdb

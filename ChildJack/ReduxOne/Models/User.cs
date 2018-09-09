@@ -5,10 +5,6 @@ namespace ReduxOne.Models
 {
     public class User : IdentityUser
     {
-        public User()
-        {
-            
-        }
         public int Year { get; set; }
     }
 }

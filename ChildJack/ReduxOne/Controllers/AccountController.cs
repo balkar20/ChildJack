@@ -3,27 +3,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ReduxOne.Models;
 
 namespace ReduxOne.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : Controller
     {
+        private UserContext db;
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<User> _roleManager;
-        //private UserContext db;
-        public AccountController(UserManager<User> userManager, RoleManager<User> roleManager)
+        private readonly SignInManager<User> _signInManager;
+        public AccountController(UserContext context, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
-            _roleManager= roleManager;
-
-            if (!_userManager.Users.Any())
-            {
-                _userManager.AddToRoleAsync(new User {Email = "balkar20@mail.ru", UserName = "balkar20"}, "admin");
-                _userManager.AddToRoleAsync(new User {Email = "kolobok@mail.ru", UserName = "kolobok"}, "user");
-            }
+            _signInManager = signInManager;
 
         }
 
@@ -34,10 +28,10 @@ namespace ReduxOne.Controllers
         }
 
         // GET api/users/5
-        [HttpGet("{id}")]
-        public IActionResult Get(string id)
+        [HttpGet("{email}")]
+        public IActionResult Get(string email)
         {
-            User user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            User user = _userManager.Users.FirstOrDefault(x => x.Email == email);
             if (user == null)
                 return NotFound();
             return new ObjectResult(user);
@@ -45,15 +39,9 @@ namespace ReduxOne.Controllers
 
         // POST api/users
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]User user)
+        public async void Post([FromBody]User user)
         {
-            if (user == null)
-            {
-                return BadRequest();
-            }
-
-            await _userManager.AddToRoleAsync(user, "user");
-            return Ok(user);
+            await _userManager.CreateAsync(user);
         }
 
         // PUT api/users/
@@ -69,21 +57,24 @@ namespace ReduxOne.Controllers
                 return NotFound();
             }
 
-            _userManager.UpdateAsync(user);
-            return Ok(user);
+          
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return Ok();
         }
 
         // DELETE api/users/5
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            User user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            User user = db.Users.FirstOrDefault(x => x.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
-            _userManager.DeleteAsync(user);
-            return Ok(user);
+            db.Entry(user).State = EntityState.Deleted;
+            db.SaveChanges();
+            return Ok();
         }
     }
 }

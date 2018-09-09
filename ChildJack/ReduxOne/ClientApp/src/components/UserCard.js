@@ -12,13 +12,13 @@ class UserCard extends React.Component {
 
     componentDidMount() {
         // This method runs when the component is first added to the page
-        const id = 2;
-        this.props.requestUser(id);
+        const email = "balkar20@mail.ru";
+        this.props.requestUser(email);
     }
 
     render() {
         return (<div className={css(styles.frame)}>
-            <span className={css(styles.text)} color='blue'>{this.props.user.name}</span>
+            <span className={css(styles.text)} color='blue'>{this.props.user.userName}</span>
         </div>)
     }
 }

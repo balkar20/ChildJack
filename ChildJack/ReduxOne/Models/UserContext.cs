@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using ReduxOne.Models;
 
 namespace ReduxOne
@@ -11,7 +10,5 @@ namespace ReduxOne
         {
             Database.EnsureCreated();
         }
-       
-        public DbSet<User> Users { get; set; }
     }
 }
